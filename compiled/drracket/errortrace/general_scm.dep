@@ -1,0 +1,1 @@
+("6.7" ("6c46859ed37eda606789a1b6dc514ac6f7ccfc7d" . "de81ee007554106fb3895c42e872b98335df92de") (collects #"errortrace" #"errortrace-key.rkt") (collects #"lang" #"plt-pretty-big.rkt") (collects #"mzscheme" #"main.rkt"))
