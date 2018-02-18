@@ -11,21 +11,44 @@
 ;;   [none]
 
 (require "mancala.scm")
+(require "barranca.scm")
 (require "evaluation.scm")
-;; (require "alphabeta.scm") ;; not yet implemented
+(require "alphabeta.scm")
 (require "cutoff-minimax.scm")
 (require "mancala-player.scm")
 (require "game.scm")
 (require "general.scm")
 
-(define mancala (make-mancala-game)) 
+;(define mancala (make-mancala-game)) 
+;
+;(define mancala-player1-eval (best-mancala-eval #t))
+;(define mancala-player2-eval (simple-mancala-eval #f))
+;
+;(define mancala-player1 
+;  (make-alpha-beta-player mancala 6 mancala-player1-eval))
+;(define mancala-player2 
+;  (make-alpha-beta-player mancala 4 mancala-player2-eval))
+;(define lazy-mancalist
+;  (lambda (state)
+;    (caar ((game-successors-fun mancala) state))))
+;
+;(game-play mancala mancala-player1 mancala-player2)
 
-(define mancala-player1-eval (best-mancala-eval #t))
-(define mancala-player2-eval (simple-mancala-eval #f))
+;; Alpha-Beta testing
+(define barranca (make-barranca-game 3 4))
+(define barranca-p1-eval (barranca-utility-fun #t 4))
+(display
+ "Alpha-Beta search of barranca (3,4): calculated optimal move: 3, Result: ")
+(display (alpha-beta-search barranca (game-start-state barranca)
+                            3 barranca-p1-eval))
+(display "\n")
 
-(define mancala-player1 
-  (make-cutoff-minimax-player mancala 3 mancala-player1-eval))
-(define mancala-player2 
-  (make-cutoff-minimax-player mancala 3 mancala-player2-eval)) 
+(define barranca2 (make-barranca-game 5 10))
+(define barranca2-p1-eval (barranca-utility-fun #t 10))
+(display
+ "Alpha-Beta search of barranca (5,10): calculated optimal move: 1, Result: ")
+(display (alpha-beta-search barranca2 (game-start-state barranca2)
+                            5 barranca2-p1-eval))
+(display "\n")
 
-(game-play mancala mancala-player1 mancala-player2)
+

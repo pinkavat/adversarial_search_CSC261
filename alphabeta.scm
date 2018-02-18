@@ -6,8 +6,8 @@
 ;;   Jerod Weinman
 ;;     Wrote all but the implementations of alpha-beta-max-value and 
 ;;      alpha-beta-min-value
-;;   Thomas Pinkava, Nick Roberson
-;;     Wrote alpha-beta-max-value and alpha-beta-min-value
+;;   Thomas Pinkava
+;;     Adapted alpha-beta-max-value and alpha-beta-min-value
 ;;
 ;; Summary
 ;;   Implementation of minimax search using alpha-beta pruning
@@ -110,29 +110,37 @@
 ;;      (cdr action-value) is the value of the action
 ;;
 ;; Provenance
-;;   procedure is somewhat derived from cutoff-minimax.scm, provided
-;;   in the lab package by Jerod Weinman,
-;;   infinity syntax found in instructor-written portion of this file
+;;   Procedure adapted from cutoff-minimax.scm, provided
+;;   in the lab package by Jerod Weinman.
 ;;
 (define alpha-beta-max-value
   (lambda (game state alpha beta depth plies evaluation-fun)
     (if (or (= depth plies)          ;; If we have reached cutoff or the end
             ((game-terminal? game) state))
-        (evaluation-fun state)
-        (let kernel [(v -inf.0)
-                     (k-alpha alpha)
-                     (successors ((game-successors-fun game) state #t))]
-                      ;; NB: is it correct to assume MAX and Player 1 are same?
+        (cons null (evaluation-fun state))
+
+        (let kernel [(successors ((game-successors-fun game) state))
+                     (max-pair (cons null -inf.0))
+                     (k-alpha alpha)]
           (if (null? successors)
-              v
-              (let [(nv (max v
-                             (alpha-beta-min-value
-                              game (car successors)
-                              k-alpha beta depth plies evaluation-fun)))]
-                (if (>= nv beta)
-                    nv
-                    (kernel nv (max k-alpha nv) (cdr successors)))))))))
-        
+		max-pair
+                ;; Recurse while there are still moves to try
+                (let* [(min-pair (alpha-beta-min-value
+                                  game (cdar successors) k-alpha beta depth plies
+                                  evaluation-fun))
+                       (val (cdr min-pair))
+                       (new-max-pair
+                        (if (> val (cdr max-pair))
+                            ;; This bit is still weird
+                            (cons (caar successors) val)
+                            max-pair))]
+                  (if (>= (cdr new-max-pair) beta)
+                      new-max-pair
+                      (kernel (cdr successors)
+                              new-max-pair
+                              (max k-alpha (cdr new-max-pair))))))))))
+
+                       
 
     
 ;;
@@ -161,7 +169,38 @@
 ;; Postconditions
 ;;   (car action-value) is a valid, optimal action from the state
 ;;   (cdr action-value) is the value of the action
+;;
+;; Provenance
+;;   Procedure adapted from cutoff-minimax.scm, provided
+;;   in the lab package by Jerod Weinman.
+;;
+(define alpha-beta-min-value
+  (lambda (game state alpha beta depth plies evaluation-fun)
+    (if (or (= depth plies)          ;; If we have reached cutoff or the end
+            ((game-terminal? game) state))
+        (cons null (evaluation-fun state))
 
-
+        (let kernel [(successors ((game-successors-fun game) state))
+                     (min-pair (cons null +inf.0))
+                     (k-beta beta)]
+          (if (null? successors)
+		min-pair
+                ;; Recurse while there are still moves to try
+                (let* [(max-pair (alpha-beta-max-value
+                                  game (cdar successors) alpha k-beta
+                                  (+ 1 depth) plies
+                                  evaluation-fun))
+                       (val (cdr max-pair))
+                       (new-min-pair
+                        (if (< val (cdr min-pair))
+                            ;; Introduction of action
+                            ;; Recursion getting weird
+                            (cons (caar successors) val)
+                            min-pair))]
+                  (if (<= (cdr new-min-pair) alpha)
+                      new-min-pair
+                      (kernel (cdr successors)
+                              new-min-pair
+                              (min k-beta (cdr new-min-pair))))))))))
 
 ) ; module
