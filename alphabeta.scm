@@ -7,7 +7,8 @@
 ;;     Wrote all but the implementations of alpha-beta-max-value and 
 ;;      alpha-beta-min-value
 ;;   Thomas Pinkava
-;;     Adapted alpha-beta-max-value and alpha-beta-min-value
+;;     Adapted alpha-beta-max-value and alpha-beta-min-value from 
+;;     provided minimax search (details below)
 ;;
 ;; Summary
 ;;   Implementation of minimax search using alpha-beta pruning

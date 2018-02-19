@@ -1,0 +1,14 @@
+References:
+  Written/online sources used:
+    Procedures used from lab packet provided by
+    instructor Jerod Weinman
+    In-class lab (by the same) used as reference
+    Alpha-Beta search adapted from Cutoff Minimax
+    written and provided for our use by Jerod Weinman
+  Help obtained:
+    None
+  Academic honesty certification:
+  Our initials below confirm that the above list of sources
+  is complete AND that I/we have not talked to anyone else
+  (e.g., CSC 261 students) about the solution to this problem
+  Initials:  TVP

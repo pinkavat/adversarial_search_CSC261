@@ -8,7 +8,7 @@
 ;;   Tests the search and evaluation functions over a variety of cases. 
 ;;
 ;; Provides
-;;   [none]
+;;   Nothing; executes test cases
 
 (require "mancala.scm")
 (require "barranca.scm")
@@ -19,20 +19,20 @@
 (require "game.scm")
 (require "general.scm")
 
-;(define mancala (make-mancala-game)) 
-;
-;(define mancala-player1-eval (best-mancala-eval #t))
-;(define mancala-player2-eval (simple-mancala-eval #f))
-;
-;(define mancala-player1 
-;  (make-alpha-beta-player mancala 6 mancala-player1-eval))
-;(define mancala-player2 
-;  (make-alpha-beta-player mancala 4 mancala-player2-eval))
-;(define lazy-mancalist
-;  (lambda (state)
-;    (caar ((game-successors-fun mancala) state))))
-;
-;(game-play mancala mancala-player1 mancala-player2)
+;; Mancala evaluation function testing
+(define mancala (make-mancala-game)) 
+
+;; Trial 1: pit simple evaluation against our heuristics
+(define mancala-player1-eval (best-mancala-eval #t))
+(define mancala-player2-eval (simple-mancala-eval #f))
+
+(define mancala-player1 
+  (make-alpha-beta-player mancala 3 mancala-player1-eval))
+(define mancala-player2 
+  (make-alpha-beta-player mancala 3 mancala-player2-eval))
+
+(game-play mancala mancala-player1 mancala-player2)
+(display "\n")
 
 ;; Alpha-Beta testing
 (define barranca (make-barranca-game 3 4))
