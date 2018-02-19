@@ -43,6 +43,14 @@
                             3 barranca-p1-eval))
 (display "\n")
 
+(define barranca (make-barranca-game 4 7))
+(define barranca-p1-eval (barranca-utility-fun #t 7))
+(display
+ "Alpha-Beta search of barranca (4,7): calculated optimal move: 2, Result: ")
+(display (alpha-beta-search barranca (game-start-state barranca)
+                            3 barranca-p1-eval))
+(display "\n")
+
 (define barranca2 (make-barranca-game 5 10))
 (define barranca2-p1-eval (barranca-utility-fun #t 10))
 (display

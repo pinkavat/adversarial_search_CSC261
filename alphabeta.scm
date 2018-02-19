@@ -116,6 +116,8 @@
 ;;
 (define alpha-beta-max-value
   (lambda (game state alpha beta depth plies evaluation-fun)
+    ;; (display "MAX state: ") (display state) (display "\n")
+    ;; (display "MAX value: ")(display alpha)(display "\n")
     (if (or (= depth plies)          ;; If we have reached cutoff or the end
             ((game-terminal? game) state))
         (cons null (evaluation-fun state))
@@ -136,6 +138,7 @@
                             (cons (caar successors) val)
                             max-pair))]
                   (if (>= (cdr new-max-pair) beta)
+                      ;; ((lambda(x) (display "prune! \n") new-max-pair) 0)
                       new-max-pair
                       (kernel (cdr successors)
                               new-max-pair
@@ -177,6 +180,8 @@
 ;;
 (define alpha-beta-min-value
   (lambda (game state alpha beta depth plies evaluation-fun)
+    ;; (display "MIN state: ") (display state) (display "\n")
+    ;; (display "MIN value: ")(display beta)(display "\n")
     (if (or (= depth plies)          ;; If we have reached cutoff or the end
             ((game-terminal? game) state))
         (cons null (evaluation-fun state))
@@ -197,8 +202,9 @@
                             ;; Introduction of action
                             ;; Recursion getting weird
                             (cons (caar successors) val)
-                            min-pair))]
+                            min-pair))]          
                   (if (<= (cdr new-min-pair) alpha)
+                      ;; ((lambda(x) (display "prune! \n") new-min-pair) 0) 
                       new-min-pair
                       (kernel (cdr successors)
                               new-min-pair
