@@ -1,5 +1,6 @@
-Script started on Sun 18 Feb 2018 06:38:42 PM CST
-$ mzscheme -l lang/plt-pretty-big-text.ss -f driver.scm
+Script started on Mon 19 Feb 2018 02:37:52 PM CST
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Padd *statusvim output.txt script output.txt[3Prm output.txt [1@cat[C[C[C[C[C[C[C[C[C[C[C[Cls[Kscript output.txtls[Kgit statuscat alphabeta.scmdrracket evaluation.scm &[4Pdriver[C[C[C[C[C[C[3Pvim references.txtls[Kvim alphabeta.scmcat[C[C[C[C[C[C[C[C[C[C[C[C[C[C[7Pgit statusls[Kcd adversarial_search_CSC261/csc261[Kls[Kexitmzscheme -l lang/plt-pretty-big-text.ss -f driver.scm[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cexport PS1="$ "[K
+$ export PS1="$ "[C[C[C[Cit[Kcho $LPDESTPRINTER[C[C[6Pman lprscript[C[C[2Pgit pushcommit -m 'documented evaluations and threw together simple driver program and transcript as backup'[C[C[C[C[C[Cstatus[K[1Padd *status[C[Cvim output.txt [C[Cscript output.txt[C[C[3Prm output.txt [C[C[1@cat[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls[Kscript output.txt[C[Cls[Kgit status[C[Ccat alphabeta.scm[C[Cdrracket evaluation.scm &[C[C[C[C[C[C[C[C[C[C[C[4Pdriver[C[C[C[C[C[C[C[C[3Pvim references.txt[C[Cls[Kvim alphabeta.scm[C[Ccat[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[7Pgit status[C[Cls[Kcd adversarial_search_CSC261/[C[C[C[C[Ccsc261[K[C[Cls[Kexit[C[Cmzscheme -l lang/plt-pretty-big-text.ss -f driver.scm
 (  ) ( 4) ( 4) ( 4) ( 4) ( 4) ( 4) (  ) 
 (  )  12   11   10    9    8    7  (  ) 
 ( 0)                               ( 0)
@@ -80,8 +81,9 @@ Player 2 chooses 12
 Player 1 Wins!
 
 Alpha-Beta search of barranca (3,4): calculated optimal move: 3, Result: 3
+Alpha-Beta search of barranca (4,7): calculated optimal move: 2, Result: 2
 Alpha-Beta search of barranca (5,10): calculated optimal move: 1, Result: 1
 $ exit
 exit
 
-Script done on Sun 18 Feb 2018 06:39:08 PM CST
+Script done on Mon 19 Feb 2018 02:38:18 PM CST

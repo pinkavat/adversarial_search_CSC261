@@ -9,6 +9,8 @@ References:
     https://www.thespruce.com/how-to-win-at-mancala-basic-strategy-411832 for
         reference on how to win the game of mancala and optimal board setups
         that increase chance of winning.
+    Documentation provided for pre-written functions used as a template for
+    other functions written
 
   Help obtained:
     None
